@@ -8,6 +8,9 @@ on:
 
 jobs:
   build:
+    permissions:
+        checks: write
+
     runs-on: ubuntu-latest
 
     steps:
@@ -27,11 +30,11 @@ jobs:
 
     # Publie les résultats de test
     # Je suis obligé de commenter car j'ai une erreur : Warning: Request POST /repos/cours-esilv/lab-git-ci-MeruemLeDieu/check-runs failed with 403: Forbidden
-    #- name: Publish Unit Test Results
-    #  uses: EnricoMi/publish-unit-test-result-action@v1
-    #  if: always()
-    #  with:
-    #    files: target/**/*.xml
+    - name: Publish Unit Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files: target/**/*.xml
 
     # Publie les fichiers présents dans le dossier target dans un build artifact
     - name: Upload a Build Artifact
