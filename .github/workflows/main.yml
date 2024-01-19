@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - 'feature/*'
 
 jobs:
   build:
@@ -38,10 +39,6 @@ jobs:
       with:
         name: my-app-1.0
         path: target/*
-
-    - name: Afficher le contenu du répertoire actuel
-      run: |
-        ls -la
 
     # Installe la commande docker sur l'agent
     - name: Install Docker
